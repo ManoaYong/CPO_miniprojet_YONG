@@ -15,6 +15,11 @@ public class CPO_demineur_YONG {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Cellule wouaf = new Cellule() ;
+        wouaf.revelerCellule() ;
+        wouaf.placerBombe() ;
+        System.out.println(wouaf);
     }
     
 }
