@@ -47,10 +47,59 @@ public class GrilleDeJeu {
     
     public void calculerBombesAdjacentes(){
         for (int i = 0 ; i < nbLignes ; i++){
-            for (int j = 0 ; j < nbColonnes ; j++){
-                if (i == 0){
+            for (int j = 0 ; j < nbColonnes ; j++){ //double boucle pour parcourir le tableau
+                int cpt = 0 ; //Compteur de bombes adjacentes qui va s'incrémenter
+                if (matricesCellule[i][j].getPresenceBombe() == false){
                     
-                }
+                    if (i == 0 &&  j == 0){ //Coin supérieur gauche
+                        if(matricesCellule[i+1][j].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                        if (matricesCellule[i][j+1].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                        if (matricesCellule[i+1][j+1].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                    }
+                    
+                    if (i == 0 && j == nbColonnes - 1){ //Coin supérieur droit
+                        if (matricesCellule[i+1][j].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                        if (matricesCellule[i][j-1].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                        if (matricesCellule[i+1][j-1].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                    }
+                    
+                    if (i == nbLignes - 1 && j == 0){ //Coin inférieur gauche
+                        if (matricesCellule[i-1][j].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                        if (matricesCellule[i][j+1].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                        if (matricesCellule[i-1][j+1].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                    }
+                    
+                    if (i == nbLignes - 1 && j == nbColonnes - 1 ){ //Coin inférieur droit
+                        if (matricesCellule[i-1][j].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                        if (matricesCellule[i][j-1].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                        if (matricesCellule[i-1][j-1].getPresenceBombe() == true){
+                            cpt += 1 ;
+                        }
+                    }//Fin pour les coins
+                    
+                }   
             }
         }
         

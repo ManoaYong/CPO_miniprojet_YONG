@@ -31,8 +31,9 @@ public class Cellule {
         
     }
     
-    public int setNbBombesAdjacentes(int x){
-        return x ;
+    
+    public void setNbBombesAdjacentes(int x){
+        nbBombesAdjacentes= x ;
     }
 
     @Override
