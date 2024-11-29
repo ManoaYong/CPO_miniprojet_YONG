@@ -9,9 +9,9 @@ package cpo_demineur_yong;
  * @author manoa
  */
 public class Cellule {
-    private boolean presenceBombe ;
-    private boolean devoilee ;
-    private int nbBombesAdjacentes ;
+    private boolean presenceBombe ; //booléen pour savoir s'il y a une bombe sur la case
+    private boolean devoilee ; //Si la cellule est dévoilée ou non 
+    private int nbBombesAdjacentes ; //Le nombre de bombes adjacentes
     
     public boolean getPresenceBombe(){
         
