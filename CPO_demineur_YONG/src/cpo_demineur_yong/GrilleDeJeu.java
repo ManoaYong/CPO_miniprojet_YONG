@@ -51,8 +51,8 @@ public class GrilleDeJeu {
                 if (matricesCellule[i][j].getPresenceBombe() == false) {
                                         
                     if (i+1 < nbLignes && matricesCellule[i + 1][j].getPresenceBombe() == true) cpt++; //Pour vérifier si on est bien dans la grille
-                    if (i-1 >= 0 && i < nbLignes && j >= 0 && j < nbColonnes && matricesCellule[i - 1][j].getPresenceBombe() == true) cpt++; //Pour vérifier si on est bien dans la grille
-                    if (i-1 >= 0 && i < nbLignes && j >= 0 && j+1 < nbColonnes && matricesCellule[i - 1][j+1].getPresenceBombe() == true) cpt++; //Pour vérifier si on est bien dans la grille
+                    if (i-1 >= 0 && i < nbLignes && j >= 0 && j < nbColonnes && matricesCellule[i - 1][j].getPresenceBombe() == true) cpt++; //En haut
+                    if (i-1 >= 0 && i < nbLignes && j >= 0 && j+1 < nbColonnes && matricesCellule[i - 1][j+1].getPresenceBombe() == true) cpt++; //En haut à droite
                     
                     if (i-1 >= 0 && i < nbLignes && j >= 0 && j+1 < nbColonnes && matricesCellule[i - 1][j+1].getPresenceBombe() == true) cpt++;
                     if (i-1 >= 0 && i < nbLignes && j >= 0 && j+1 < nbColonnes && matricesCellule[i - 1][j+1].getPresenceBombe() == true) cpt++;
