@@ -25,6 +25,10 @@ public class Cellule {
     public  void placerBombe(){
         presenceBombe = true ;
     }
+
+    public boolean isDevoilee() {
+        return devoilee;
+    }
     
     public void revelerCellule(){
         devoilee = true ;
