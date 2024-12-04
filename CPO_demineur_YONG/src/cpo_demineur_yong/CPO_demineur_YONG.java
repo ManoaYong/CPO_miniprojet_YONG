@@ -20,6 +20,11 @@ public class CPO_demineur_YONG {
         wouaf.revelerCellule() ;
         wouaf.placerBombe() ;
         System.out.println(wouaf);
+        
+        Cellule coq ;
+        coq = new Cellule() ;
+        
+        
     }
     
 }
