@@ -24,15 +24,15 @@ public class CPO_demineur_YONG {
         Cellule coq ;
         coq = new Cellule() ;
         
-        GrilleDeJeu grille ;
-        grille = new GrilleDeJeu() ;
-        grille.matricesCellule[0][0] = wouaf ;
+        //GrilleDeJeu grille ;
+        //grille = new GrilleDeJeu() ;
+        //grille.matricesCellule[0][0] = wouaf ;
         
         
-        System.out.println("yyhygvuhbyuhj");
-        System.out.println(grille);
-        //System.out.println(grille.toString()) ;
+        Partie canard ;
+        canard = new Partie() ; 
+        canard.demarrerPartie();
         
-    }
+    } //Fin du main 
     
-}
+} //Fin de la class

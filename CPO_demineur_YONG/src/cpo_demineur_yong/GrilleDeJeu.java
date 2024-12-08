@@ -19,23 +19,35 @@ public class GrilleDeJeu {
     private int nbColonnes; //Nombre de colonne dans la grille
     private int nbBombes; //Nombre total de bombes placées dans la grille
 
-    public int getNbLines() { //accesseur 
+    public int getNbLines() { //accesseur pour le nombre de lignes
         return nbLignes;
     }
 
-    public int getNbColonnes() { //accesseur
+    public int getNbColonnes() { //accesseur pour le nombre de colonnes
         return nbColonnes;
     }
 
-    public int getNbBombes() { //accesseur
+    public int getNbBombes() { //accesseur pour le nombre de bombes totales
         return nbBombes;
+    }
+
+    public void setNbLignes(int nbLignes) { //Setter pour le nombre de lignes
+        this.nbLignes = nbLignes;
+    }
+
+    public void setNbColonnes(int nbColonnes) { //Setter pour le nopmbre de colonnes
+        this.nbColonnes = nbColonnes;
+    }
+
+    public void setNbBombes(int nbBombes) { //Setter pour le nombre de bombes totales
+        this.nbBombes = nbBombes;
     }
 
     public void placerBombesAleatoirement() {
         int i = 0;
         while (i < nbBombes) {
-            int x = r.nextInt(nbLignes) - 1;
-            int y = r.nextInt(nbColonnes) - 1;
+            int x = r.nextInt(nbLignes - 1) ;
+            int y = r.nextInt(nbColonnes - 1) ;
             if (matricesCellule[x][y].getPresenceBombe() == false) {
                 matricesCellule[x][y].placerBombe();
                 i++; //Incrémente le nombre de bombe placées
