@@ -19,6 +19,7 @@ public class Partie {
     
     public void initialiserPartie(){
         board.placerBombesAleatoirement();
+        board.calculerBombesAdjacentes() ;
         
     } //Fin de la méthode initialiser Partie 
     
@@ -47,14 +48,24 @@ public class Partie {
             board.setNbLignes(6) ;
             board.setNbColonnes(6);
             board.setNbBombes(12);
-            board.matricesCellule = new Cellule[6][6] ;
+            board.matricesCellule = new Cellule[6][6] ; //Initialisation de la mémoire 
+            for (int i = 0 ; i < 6 ; i++){
+                for (int j = 0 ; j < 6 ; j++){
+                    board.matricesCellule[i][j] = new Cellule() ;
+                }
+            } //Fin de la double boucle
         }
-        if (Niveau == "Moyen" || Niveau == "moyen"){
+        else if ("Moyen".equals(Niveau) || "moyen".equals(Niveau)){
             nbVies = 3 ;
             board.setNbLignes(10) ;
             board.setNbColonnes(10);
             board.setNbBombes(50);
             board.matricesCellule = new Cellule[10][10] ;
+            for (int i = 0 ; i < 10 ; i++){
+                for (int j = 0 ; j < 10 ; j++){
+                    board.matricesCellule[i][j] = new Cellule() ;
+                }
+            } //Fin de la double boucle
         }
         else{
             nbVies  = 1 ;
@@ -62,21 +73,34 @@ public class Partie {
             board.setNbColonnes(15);
             board.setNbBombes(125);
             board.matricesCellule= new Cellule[15][15] ;
+            for (int i = 0 ; i < 15 ; i++){
+                for (int j = 0 ; j < 15 ; j++){
+                    board.matricesCellule[i][j] = new Cellule() ;
+                }
+            } //Fin de la double boucle
         }
         
         initialiserPartie() ; //On initialise le boardgame
         while (nbVies > 0){ //Boucle de jeu
+            if ( nbVies == 1){
+                System.out.println("Plus qu'une vie") ;
+            }
             if (verifierVictoire()){
+                System.out.println("Vous avez gagne") ;
                  break ;
             }
             else{
-                   System.out.println("Quelle case souhaitez-vous dévoiler ?");
+                   System.out.println("Quelle case souhaitez-vous devoiler ?");
+                   System.out.println(board);
                    System.out.println("Ligne : ? Colonne : ?");
-                   TourDeJeu(sc.nextInt(), sc.nextInt()) ; //Le joueur joue
+                   TourDeJeu(sc.nextInt() - 1, sc.nextInt() - 1) ; //Le joueur joue
+                   System.out.println("New turn") ;
                    
             }
         } //Fin du while
+        System.out.println("Vous avez perdu ");
         
     } //Fin de la méthode demarrerPartie
     
 } //Fin de la classe Partie
+

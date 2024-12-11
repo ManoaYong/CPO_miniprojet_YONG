@@ -4,6 +4,8 @@
  */
 package cpo_demineur_yong;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -164,9 +166,9 @@ public class GrilleDeJeu {
                     }//Pour les cellules qui ne sont pas sur les bordures
                      */
 
-                    if (i >= 0 && i < nbLignes && j >= 0 && j < nbColonnes) {//Pour vérifier si on est bien dans la grille
+                    //if (i >= 0 && i < nbLignes && j >= 0 && j < nbColonnes) {//Pour vérifier si on est bien dans la grille
 
-                    }
+                    //}
                     matricesCellule[i][j].setNbBombesAdjacentes(cpt);
                     //Affecte le nombre de bombe adjacentes
                 }
@@ -216,12 +218,21 @@ public class GrilleDeJeu {
 
     @Override
     public String toString() {
-        for (int i = 0 ; i < matricesCellule.length ; i++){
-            return matricesCellule[i][1].toString() ;
-        }
-        return "GrilleDeJeu{" + "matricesCellule=" + matricesCellule + '}';
-    }
+        
+        String tmp = "" ;
+        for (int i = 0 ; i < matricesCellule.length ; i ++){
+            if ( i != 0 ){
+                tmp += "\n" ;
+            }
+            for (int j = 0 ; j < matricesCellule.length ; j++){
+                tmp += matricesCellule[i][j] ;
+            }
+        }//Fin de la double boucle
+        return tmp ;
+        
+        
     
     
+    } //Fin de la méthode toString
 
 }
