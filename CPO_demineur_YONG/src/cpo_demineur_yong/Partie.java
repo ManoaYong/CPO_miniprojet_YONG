@@ -11,8 +11,8 @@ import java.util.Scanner;
  * @author manoa
  */
 public class Partie {
-    
-    GrilleDeJeu board = new GrilleDeJeu() ;
+    private GrilleDeJeu board ;
+    //GrilleDeJeu board = new GrilleDeJeu() ;
     int nbVies = 1 ;
     String Niveau ;
     Scanner sc = new Scanner(System.in);
@@ -62,7 +62,7 @@ public class Partie {
             board.setNbLignes(15) ;
             board.setNbColonnes(15);
             board.setNbBombes(125);
-            board.matricesCellule = new Cellule[15][15] ;
+            board.matricesCellule= new Cellule[15][15] ;
         }
         
         initialiserPartie() ; //On initialise le boardgame
