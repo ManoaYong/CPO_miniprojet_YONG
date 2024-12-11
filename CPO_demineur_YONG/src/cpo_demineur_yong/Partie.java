@@ -11,8 +11,7 @@ import java.util.Scanner;
  * @author manoa
  */
 public class Partie {
-    private GrilleDeJeu board ;
-    //GrilleDeJeu board = new GrilleDeJeu() ;
+    private GrilleDeJeu board  = new GrilleDeJeu() ;
     int nbVies = 1 ;
     String Niveau ;
     Scanner sc = new Scanner(System.in);
@@ -43,7 +42,7 @@ public class Partie {
         System.out.println("Quel mode voulez-vous ?") ;
         System.out.println("Facile , Moyen , Difficile") ;
         Niveau = sc.nextLine() ; //Le joueur rentre le niveau voulu
-        if (Niveau == "Facile" || Niveau == "facile"){
+        if ("Facile".equals(Niveau) || "facile".equals(Niveau)){
             nbVies = 5 ;
             board.setNbLignes(6) ;
             board.setNbColonnes(6);
