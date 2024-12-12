@@ -58,7 +58,7 @@ public class GrilleDeJeu {
         }
     }
 
-    public void calculerBombesAdjacentes() { //Méthide de calculedes bombes adjacentes
+    public void calculerBombesAdjacentes() { //Méthode de calculedes bombes adjacentes
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) { //double boucle pour parcourir le tableau
                 int cpt = 0; //Compteur de bombes adjacentes qui va s'incrémenter
@@ -79,13 +79,13 @@ public class GrilleDeJeu {
                     if (i >= 0 && i < nbLignes && j >= 0 && j + 1 < nbColonnes && matricesCellule[i][j + 1].getPresenceBombe() == true) {
                         cpt++; //A droite
                     }
-                    if (i >= 0 && i < nbLignes && j >= 0 && j - 1 < nbColonnes && matricesCellule[i][j - 1].getPresenceBombe() == true) {
+                    if (i >= 0 && i < nbLignes && j - 1 >= 0 && j - 1 < nbColonnes && matricesCellule[i][j - 1].getPresenceBombe() == true) {
                         cpt++; //A gauche
                     }
-                    if (i + 1 >= 0 && i < nbLignes && j >= 0 && j + 1 < nbColonnes && matricesCellule[i + 1][j + 1].getPresenceBombe() == true) {
+                    if ( i + 1 < nbLignes && j + 1 < nbColonnes && matricesCellule[i + 1][j + 1].getPresenceBombe() == true) {
                         cpt++; //En bas à droite
                     }
-                    if (i + 1 >= 0 && i < nbLignes && j - 1 >= 0 && j < nbColonnes && matricesCellule[i + 1][j - 1].getPresenceBombe() == true) {
+                    if ( i + 1 < nbLignes && j - 1 >= 0 && matricesCellule[i + 1][j - 1].getPresenceBombe() == true) {
                         cpt++; //En bas à gauche
                     }
                     /*
@@ -206,14 +206,20 @@ public class GrilleDeJeu {
     }
 
     public boolean toutesCellulesRevelees() { //Méthode pour savoir si toutes les bombes sont révélées
+        int cpt = 0 ;
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
-                if (!matricesCellule[i][j].isDevoilee()) {
-                    return false;
+                if (matricesCellule[i][j].isDevoilee()) {
+                    cpt += 1;
                 }
             }
         }//Fin des boucles
-        return true ;
+        if (cpt == matricesCellule.length * matricesCellule.length - nbBombes){
+            return true ;
+        }
+        else {
+            return false ;
+        }
     }
 
     @Override
