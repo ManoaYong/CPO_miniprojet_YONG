@@ -175,19 +175,20 @@ public class GrilleDeJeu {
             }
         }
     }//Fin de la méthode calculerBombesAdjacentes
+    
 
-    public void revelerCellule(int ligne, int colonne) {
-        if (matricesCellule[ligne][colonne].isDevoilee()) { //On vérifie si la case est déjà vérifiée
+    /*public void revelerCellule(int ligne, int colonne) {
+        if (matricesCellule[ligne - 1][colonne - 1].isDevoilee()) { //On vérifie si la case est déjà vérifiée
             return;
         }
-        matricesCellule[ligne][colonne].revelerCellule(); //On révèle la cellule
-        if (matricesCellule[ligne][colonne].getPresenceBombe()) {
+        matricesCellule[ligne - 1][colonne - 1].revelerCellule(); //On révèle la cellule
+        if (matricesCellule[ligne - 1][colonne - 1].getPresenceBombe()) {
             
             return; //Si il y une bombe on arrête
         }
-        if (matricesCellule[ligne][colonne].getNbBombesAdjacentes() == 0) { //Si il n'y a pas de bombes autour
-            for (int i = ligne - 1 ; i < ligne + 1 ; i++){
-                for (int j = colonne - 1 ; j < colonne + 1 ; j++){
+        if (matricesCellule[ligne - 1][colonne - 1].getNbBombesAdjacentes() == 0) { //Si il n'y a pas de bombes autour
+            for (int i = - 1 ; i <= 1  ; i++){
+                for (int j = - 1 ; j <= 1  ; j++){
                     if (i == 0 && j == 0){
                         continue ;
                     }
@@ -199,7 +200,30 @@ public class GrilleDeJeu {
                 }
             }
         }
-    }//Fin méthode revelerCellule 
+    }//Fin de la méthode revelerCellule  
+    */
+    
+    public void revelerCellule(int ligne, int colonne) {
+        // 1️⃣ Vérification des bornes de la grille (éviter l'IndexOutOfBoundsException)
+        if (ligne - 1 < 0 || ligne - 1 >= nbLignes || colonne - 1 < 0 || colonne - 1 >= nbColonnes || matricesCellule[ligne][colonne].isDevoilee() == true) {
+            return ;
+        }
+        matricesCellule[ligne ][colonne ].revelerCellule() ;
+
+        if (matricesCellule[ligne ][colonne ].getPresenceBombe() || matricesCellule[ligne ][colonne ].getNbBombesAdjacentes() > 0) {
+            return ;
+        }
+
+        for (int i = -1 ; i <= 1 ; i++) {
+            for (int j = -1 ; j <= 1 ; j++) {
+                if (i == 0 && j == 0) {
+                    continue ;
+                }
+                revelerCellule(ligne  + i, colonne  + j);
+            }
+        } //Fin de la double boucle
+    } //Fin de la méthode revelerCellule 
+    
 
     public boolean getPresenceBombe(int i, int j) { //Getter pour savoir si il y a une bombe
         return matricesCellule[i][j].getPresenceBombe() ;
@@ -220,7 +244,7 @@ public class GrilleDeJeu {
         else {
             return false ;
         }
-    }
+    } //Fin de la méthode toutesCellulesRevelees   
 
     @Override
     public String toString() {
@@ -236,9 +260,22 @@ public class GrilleDeJeu {
         }//Fin de la double boucle
         return tmp ;
         
-        
-    
     
     } //Fin de la méthode toString
+ public String triche() {
+        
+        String tmp = "" ;
+        for (int i = 0 ; i < matricesCellule.length ; i ++){
+            if ( i != 0 ){
+                tmp += "\n" ;
+            }
+            for (int j = 0 ; j < matricesCellule.length ; j++){
+                tmp += matricesCellule[i][j].triche() ;
+            }
+        }//Fin de la double boucle
+        return tmp ;
+        
+    
+    }
+} //Fin de la classe GrilleDeJeu  
 
-}
