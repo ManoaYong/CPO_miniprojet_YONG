@@ -50,7 +50,7 @@ public class Cellule {
                 return "B" ; 
             }
             else if(nbBombesAdjacentes > 0){
-                return nbBombesAdjacentes +"" ;
+                return String.valueOf(nbBombesAdjacentes);
             }
             else{
                 return " " ;
@@ -58,5 +58,20 @@ public class Cellule {
         //return "Cellule{" + "nbBombesAdjacentes=" + nbBombesAdjacentes + '}';
         }
     }
+
+    public String triche() {
+        
+            if (presenceBombe == true){
+                return "B" ; 
+            }
+            else if(nbBombesAdjacentes > 0){
+                return nbBombesAdjacentes +"" ;
+            }
+            else{
+                return " " ;
+            }
+        //return "Cellule{" + "nbBombesAdjacentes=" + nbBombesAdjacentes + '}';
+        }
+    
     
 }

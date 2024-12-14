@@ -19,15 +19,17 @@ public class Partie {
     
     public void initialiserPartie(){
         board.placerBombesAleatoirement();
-        board.calculerBombesAdjacentes() ;
+        board.calculerBombesAdjacentes();
         
     } //Fin de la méthode initialiser Partie 
     
     public void TourDeJeu(int ligne , int colonne){
-        board.matricesCellule[ligne][colonne].revelerCellule() ; //Il révèle la cellule de son choix
+        //board.matricesCellule[ligne][colonne].revelerCellule() ; //Il révèle la cellule de son choix
+        board.revelerCellule(ligne, colonne); 
         if (board.matricesCellule[ligne][colonne].getPresenceBombe()){ 
             nbVies -= 1 ; //S'il révèle une bombe il perd une vie 
         }
+        
     } //Fin méthode TourDeJeu 
     
     public boolean  verifierVictoire(){
@@ -44,10 +46,10 @@ public class Partie {
         System.out.println("Facile , Moyen , Difficile") ;
         Niveau = sc.nextLine() ; //Le joueur rentre le niveau voulu
         if ("Facile".equals(Niveau) || "facile".equals(Niveau)){
-            nbVies = 5 ;
+            nbVies = 1 ;
             board.setNbLignes(6) ;
             board.setNbColonnes(6);
-            board.setNbBombes(12);
+            board.setNbBombes(5);
             board.matricesCellule = new Cellule[6][6] ; //Initialisation de la mémoire 
             for (int i = 0 ; i < 6 ; i++){
                 for (int j = 0 ; j < 6 ; j++){
@@ -56,10 +58,10 @@ public class Partie {
             } //Fin de la double boucle
         }
         else if ("Moyen".equals(Niveau) || "moyen".equals(Niveau)){
-            nbVies = 3 ;
+            nbVies = 1 ;
             board.setNbLignes(10) ;
             board.setNbColonnes(10);
-            board.setNbBombes(50);
+            board.setNbBombes(10);
             board.matricesCellule = new Cellule[10][10] ;
             for (int i = 0 ; i < 10 ; i++){
                 for (int j = 0 ; j < 10 ; j++){
@@ -71,7 +73,7 @@ public class Partie {
             nbVies  = 1 ;
             board.setNbLignes(15) ;
             board.setNbColonnes(15);
-            board.setNbBombes(125);
+            board.setNbBombes(30);
             board.matricesCellule= new Cellule[15][15] ;
             for (int i = 0 ; i < 15 ; i++){
                 for (int j = 0 ; j < 15 ; j++){
@@ -91,14 +93,20 @@ public class Partie {
             }
             else{
                    System.out.println("Quelle case souhaitez-vous devoiler ?");
+                   //System.out.println("123456789") ;
                    System.out.println(board);
+                   System.out.println(" la triche :::::");
+                   System.out.println(board.triche());
+                   
                    System.out.println("Ligne : ? Colonne : ?");
-                   TourDeJeu(sc.nextInt() - 1, sc.nextInt() - 1) ; //Le joueur joue
+                   TourDeJeu(sc.nextInt() - 1 , sc.nextInt() - 1) ; //Le joueur joue
                    System.out.println("New turn") ;
                    
             }
         } //Fin du while
-        System.out.println("Vous avez perdu ");
+        if (!verifierVictoire()){
+            System.out.println("Vous avez perdu ");
+        }
         
     } //Fin de la méthode demarrerPartie
     
