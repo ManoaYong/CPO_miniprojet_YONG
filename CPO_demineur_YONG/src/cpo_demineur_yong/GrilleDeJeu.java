@@ -21,6 +21,12 @@ public class GrilleDeJeu {
     private int nbColonnes; //Nombre de colonne dans la grille
     private int nbBombes; //Nombre total de bombes placées dans la grille
 
+    public GrilleDeJeu(int nbLignes, int nbColonnes) { //constructor
+        this.nbLignes = nbLignes;
+        this.nbColonnes = nbColonnes;
+    }//Fin constructor
+
+    
     public int getNbLines() { //accesseur pour le nombre de lignes
         return nbLignes;
     }

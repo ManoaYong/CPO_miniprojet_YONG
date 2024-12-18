@@ -11,7 +11,8 @@ import java.util.Scanner;
  * @author manoa
  */
 public class Partie {
-    private GrilleDeJeu board  = new GrilleDeJeu() ;
+    //private GrilleDeJeu board  = new GrilleDeJeu() ;
+    private GrilleDeJeu board ;
     int nbVies = 1 ;
     String Niveau ;
     Scanner sc = new Scanner(System.in);
@@ -47,8 +48,9 @@ public class Partie {
         Niveau = sc.nextLine() ; //Le joueur rentre le niveau voulu
         if ("Facile".equals(Niveau) || "facile".equals(Niveau)){
             nbVies = 1 ;
-            board.setNbLignes(6) ;
-            board.setNbColonnes(6);
+            board = new GrilleDeJeu(6 , 6) ;
+            //board.setNbLignes(6) ;
+            //board.setNbColonnes(6);
             board.setNbBombes(5);
             board.matricesCellule = new Cellule[6][6] ; //Initialisation de la mémoire 
             for (int i = 0 ; i < 6 ; i++){
@@ -59,8 +61,9 @@ public class Partie {
         }
         else if ("Moyen".equals(Niveau) || "moyen".equals(Niveau)){
             nbVies = 1 ;
-            board.setNbLignes(10) ;
-            board.setNbColonnes(10);
+            board = new GrilleDeJeu(10 , 10) ;
+            //board.setNbLignes(10) ;
+            //board.setNbColonnes(10);
             board.setNbBombes(10);
             board.matricesCellule = new Cellule[10][10] ;
             for (int i = 0 ; i < 10 ; i++){
@@ -71,8 +74,9 @@ public class Partie {
         }
         else{
             nbVies  = 1 ;
-            board.setNbLignes(15) ;
-            board.setNbColonnes(15);
+            board = new GrilleDeJeu(15 , 15) ;
+            //board.setNbLignes(15) ;
+            //board.setNbColonnes(15);
             board.setNbBombes(30);
             board.matricesCellule= new Cellule[15][15] ;
             for (int i = 0 ; i < 15 ; i++){
